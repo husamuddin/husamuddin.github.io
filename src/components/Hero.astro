@@ -42,7 +42,7 @@
       <div class="hero-right">
         <div class="diagram-label">Live_Deploy_Visualizer</div>
         <pre class="diagram-code">
-[DEPLOYING] &gt;&gt; k3s_cluster_prod
+[DEPLOYING] &gt;&gt; k8s_cluster_prod
 [FETCHING]  &gt;&gt; argocd/applicationset
 
     +------------------+     +------------------+
@@ -54,11 +54,12 @@
     +--------+---------+     +------------------+
              |
     +--------v----------------------------------+
-    |           k3s CLUSTER                     |
-    |  +----------+    +----------+             |
-    |  |  ArgoCD  |    |   App    |             |
-    |  +----------+    | Workload |             |
-    |                  +----------+             |
+    |           k8s CLUSTER                     |
+    |                                           |
+    |  +----------+    +------------------+     |
+    |  |  ArgoCD  |    |   Apps Workload  |     |
+    |  +----------+    +------------------+     |
+    |                                           |
     |  +------------------+                     |    +------------+
     |  | External Secrets |-- secrets sync -----|---&gt;| Bitwarden  |
     |  +------------------+                     |    +------------+
