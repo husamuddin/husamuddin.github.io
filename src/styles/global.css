@@ -1,57 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg:             #131314;
+  --color-bg-low:         #1c1b1c;
+  --color-bg-container:   #201f20;
+  --color-bg-high:        #2a2a2b;
+  --color-bg-highest:     #353436;
+  --color-border:         #3c4a42;
+  --color-primary:        #4edea3;
+  --color-primary-bright: #6ffbbe;
+  --color-secondary:      #adc6ff;
+  --color-text:           #e5e2e3;
+  --color-text-muted:     #bbcac0;
+  --color-text-subtle:    #86948a;
+  --color-outline:        #86948a;
+  --font-sans:            'Space Grotesk', system-ui, sans-serif;
+  --font-mono:            ui-monospace, 'Cascadia Code', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+}
+
+/* rgba tokens — can't be Tailwind color tokens */
+/* backward-compat aliases so existing component styles keep working during migration */
 :root {
-  --bg:              #131314;
-  --bg-low:          #1c1b1c;
-  --bg-container:    #201f20;
-  --bg-high:         #2a2a2b;
-  --bg-highest:      #353436;
-  --border:          #3c4a42;
-  --border-dim:      rgba(60, 74, 66, 0.2);
-  --primary:         #4edea3;
-  --primary-bright:  #6ffbbe;
-  --primary-dim:     rgba(78, 222, 163, 0.1);
-  --secondary:       #adc6ff;
-  --text:            #e5e2e3;
-  --text-muted:      #bbcac0;
-  --text-subtle:     #86948a;
-  --outline:         #86948a;
-  --sans:            'Space Grotesk', system-ui, sans-serif;
-  --mono:            'Space Grotesk', monospace;
+  --border-dim:     rgba(60, 74, 66, 0.2);
+  --primary-dim:    rgba(78, 222, 163, 0.1);
+  --bg:             var(--color-bg);
+  --bg-low:         var(--color-bg-low);
+  --bg-container:   var(--color-bg-container);
+  --bg-high:        var(--color-bg-high);
+  --bg-highest:     var(--color-bg-highest);
+  --border:         var(--color-border);
+  --primary:        var(--color-primary);
+  --primary-bright: var(--color-primary-bright);
+  --secondary:      var(--color-secondary);
+  --text:           var(--color-text);
+  --text-muted:     var(--color-text-muted);
+  --text-subtle:    var(--color-text-subtle);
+  --outline:        var(--color-outline);
+  --sans:           var(--font-sans);
+  --mono:           'Space Grotesk', monospace; /* UI decorative — not for pre/code */
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-radius: 0 !important;
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-radius: 0 !important;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    padding-bottom: 48px;
+  }
+
+  ::selection { background: var(--color-primary); color: #003824; }
+
+  a { color: var(--color-primary); text-decoration: none; transition: color 0.1s; }
+  a:hover { color: var(--color-primary-bright); }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--color-border); }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer components {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: 15px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  padding-bottom: 48px;
-}
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-dim);
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+  }
 
-::selection {
-  background: var(--primary);
-  color: #003824;
-}
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+  }
 
-a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: color 0.1s;
-}
+  .section-title .prompt { color: var(--color-primary); }
 
-a:hover { color: var(--primary-bright); }
+  .prompt { color: var(--color-primary); }
+
+  .section-meta {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--color-outline);
+    text-transform: uppercase;
+  }
+}
 
 .scanline-overlay {
   background:
@@ -61,12 +115,8 @@ a:hover { color: var(--primary-bright); }
   pointer-events: none;
 }
 
-.cursor-blink {
-  animation: blink 1s step-end infinite;
-}
-@keyframes blink {
-  50% { opacity: 0; }
-}
+.cursor-blink { animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
 
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
@@ -84,38 +134,3 @@ a:hover { color: var(--primary-bright); }
   -webkit-font-smoothing: antialiased;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.section-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border-dim);
-  padding-bottom: 16px;
-  margin-bottom: 32px;
-}
-
-.section-title {
-  font-size: 22px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-}
-
-.section-title .prompt { color: var(--primary); }
-
-.section-meta {
-  font-family: monospace;
-  font-size: 11px;
-  color: var(--outline);
-  text-transform: uppercase;
-}
-
-/* scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); }

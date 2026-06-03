@@ -23,89 +23,28 @@ const caps = [
 ];
 ---
 
-<section class="section">
+<section class="py-16">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header flex items-center">
       <h2 class="section-title">
         <span class="prompt">$</span> system-info --capabilities
       </h2>
       <span class="section-meta">[TOTAL_MODULES: 04]</span>
     </div>
 
-    <div class="caps-grid">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-4">
       {caps.map(c => (
-        <div class="cap-card">
-          <div class="cap-top">
-            <span class="badge">[RUNNING]</span>
-            <span class="material-symbols-outlined cap-icon">{c.icon}</span>
+        <div class="bg-bg-low p-6 border-l-2 border-primary transition-colors duration-100 hover:bg-bg-high">
+          <div class="flex justify-between items-start mb-4">
+            <span class="font-mono text-[9px] font-bold bg-primary text-[#003824] px-1.5 py-0.5 tracking-[0.05em]">
+              [RUNNING]
+            </span>
+            <span class="material-symbols-outlined text-[22px] text-primary">{c.icon}</span>
           </div>
-          <h3 class="cap-name">{c.name}</h3>
-          <p class="cap-desc">{c.desc}</p>
+          <h3 class="text-[16px] font-bold uppercase tracking-[-0.02em] mb-2">{c.name}</h3>
+          <p class="text-[12px] text-text-muted leading-relaxed">{c.desc}</p>
         </div>
       ))}
     </div>
   </div>
 </section>
-
-<style>
-  .section {
-    padding: 64px 0;
-  }
-
-  .caps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
-  }
-
-  .cap-card {
-    background: var(--bg-low);
-    padding: 24px;
-    border-left: 2px solid var(--primary);
-    transition: background 0.1s;
-  }
-
-  .cap-card:hover {
-    background: var(--bg-high);
-  }
-
-  .cap-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 16px;
-  }
-
-  .badge {
-    font-size: 9px;
-    font-weight: 700;
-    background: var(--primary);
-    color: #003824;
-    padding: 2px 6px;
-    font-family: monospace;
-    letter-spacing: 0.05em;
-  }
-
-  .cap-icon {
-    color: var(--primary);
-    font-size: 22px;
-  }
-
-  .cap-name {
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
-  }
-
-  .cap-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  @media (max-width: 600px) {
-    .caps-grid { grid-template-columns: 1fr; }
-  }
-</style>

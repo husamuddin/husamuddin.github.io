@@ -27,120 +27,43 @@ const projects = [
 ];
 ---
 
-<section class="section" id="projects">
+<section class="py-16" id="projects">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header flex items-center">
       <h2 class="section-title">
         <span class="prompt">$</span> ls ~/side-projects/
       </h2>
       <span class="section-meta">[ACTIVE_PROCESSES: {projects.length}]</span>
     </div>
 
-    <div class="projects-grid">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-4">
       {projects.map(p => (
-        <div class="project-card">
-          <div class="project-top">
-            <span class={`badge ${p.status === 'RUNNING' ? 'badge-running' : 'badge-wip'}`}>
+        <div class="bg-bg-low p-6 border-l-2 border-primary flex flex-col gap-3
+                    transition-colors duration-100 hover:bg-bg-high">
+          <div class="flex justify-between items-start">
+            <span class={`font-mono text-[9px] font-bold px-1.5 py-0.5 tracking-[0.05em] ${
+              p.status === 'RUNNING'
+                ? 'bg-primary text-[#003824]'
+                : 'bg-[#d29922] text-[#1a0e00]'
+            }`}>
               [{p.status}]
             </span>
-            <span class="material-symbols-outlined project-icon">
+            <span class="material-symbols-outlined text-[18px] text-primary">
               {p.status === 'RUNNING' ? 'check_circle' : 'pending'}
             </span>
           </div>
-          <h3 class="project-name">{p.name}</h3>
-          <p class="project-desc">{p.desc}</p>
-          <div class="project-stack">
-            {p.stack.map(t => <span class="tag">{t}</span>)}
+          <h3 class="font-mono text-[15px] font-bold lowercase text-text">{p.name}</h3>
+          <p class="text-[12px] text-text-muted leading-relaxed flex-1">{p.desc}</p>
+          <div class="flex flex-wrap gap-[5px]">
+            {p.stack.map(t => (
+              <span class="font-mono text-[10px] text-outline bg-bg-container
+                           border border-[var(--border-dim)] px-[7px] py-0.5">
+                {t}
+              </span>
+            ))}
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
-
-<style>
-  .section { padding: 64px 0; }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-  }
-
-  .project-card {
-    background: var(--bg-low);
-    padding: 24px;
-    border-left: 2px solid var(--primary);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: background 0.1s;
-  }
-
-  .project-card:hover {
-    background: var(--bg-high);
-  }
-
-  .project-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .badge {
-    font-family: monospace;
-    font-size: 9px;
-    font-weight: 700;
-    padding: 2px 6px;
-    letter-spacing: 0.05em;
-  }
-
-  .badge-running {
-    background: var(--primary);
-    color: #003824;
-  }
-
-  .badge-wip {
-    background: #d29922;
-    color: #1a0e00;
-  }
-
-  .project-icon {
-    color: var(--primary);
-    font-size: 18px;
-  }
-
-  .project-name {
-    font-family: monospace;
-    font-size: 15px;
-    font-weight: 700;
-    text-transform: lowercase;
-    color: var(--text);
-  }
-
-  .project-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    flex: 1;
-  }
-
-  .project-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-
-  .tag {
-    font-family: monospace;
-    font-size: 10px;
-    color: var(--outline);
-    background: var(--bg-container);
-    border: 1px solid var(--border-dim);
-    padding: 2px 7px;
-  }
-
-  @media (max-width: 600px) {
-    .projects-grid { grid-template-columns: 1fr; }
-  }
-</style>

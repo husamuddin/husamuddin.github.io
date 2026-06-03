@@ -67,7 +67,7 @@ const logs = [
 ];
 ---
 
-<section class="section" id="experience">
+<section class="py-16" id="experience">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">
@@ -75,44 +75,37 @@ const logs = [
       </h2>
     </div>
 
-    <div class="log-list">
+    <div class="flex flex-col gap-1 font-mono">
       {logs.map((entry, i) => (
-        <div class={`log-entry ${i === 0 ? 'log-entry-current' : ''}`}>
-          <div class="log-line">
-            <span class="log-period">[{entry.period}]</span>
-            <span class="log-tag">{entry.tag}</span>
-            <span class="log-company">{entry.company}</span>
+        <div class={`p-4 border transition-all duration-100 hover:bg-bg-low hover:border-[var(--border-dim)] ${
+          i === 0
+            ? 'bg-bg-low border-[var(--border-dim)]'
+            : 'border-transparent'
+        }`}>
+          <div class={`flex flex-wrap gap-4 items-baseline text-[13px] max-sm:flex-col max-sm:gap-1 ${
+            i === 0 || (i > 0 && i <= 2) ? 'mb-4' : ''
+          }`}>
+            <span class="text-outline shrink-0 text-[12px] max-sm:text-[10px]">[{entry.period}]</span>
+            <span class="text-primary shrink-0 text-[12px]">{entry.tag}</span>
+            <span class="text-text font-medium font-sans text-[14px]">{entry.company}</span>
           </div>
 
-          {i === 0 && (
-            <div class="log-detail">
-              <ul class="log-bullets">
+          {(i === 0 || (i > 0 && i <= 2)) && (
+            <div>
+              <ul class="flex flex-col gap-1.5 mb-3">
                 {entry.highlights.map(h => (
-                  <li>
-                    <span class="bullet-arrow">▸</span>{h}
+                  <li class="font-sans text-[13px] text-text-muted flex gap-2 leading-[1.5]">
+                    <span class="text-primary text-[10px] shrink-0 mt-[3px]">▸</span>
+                    {h}
                   </li>
                 ))}
               </ul>
-              <div class="log-stack">
+              <div class="flex flex-wrap gap-1.5">
                 {entry.stack.map(t => (
-                  <span class="tag">{t}</span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {i > 0 && i <= 2 && (
-            <div class="log-detail log-detail-collapsed">
-              <ul class="log-bullets">
-                {entry.highlights.map(h => (
-                  <li>
-                    <span class="bullet-arrow">▸</span>{h}
-                  </li>
-                ))}
-              </ul>
-              <div class="log-stack">
-                {entry.stack.map(t => (
-                  <span class="tag">{t}</span>
+                  <span class="font-mono text-[11px] text-outline bg-bg-container
+                               border border-[var(--border-dim)] px-2 py-0.5">
+                    {t}
+                  </span>
                 ))}
               </div>
             </div>
@@ -122,114 +115,3 @@ const logs = [
     </div>
   </div>
 </section>
-
-<style>
-  .section { padding: 64px 0; }
-
-  .log-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-family: monospace;
-  }
-
-  .log-entry {
-    padding: 16px;
-    border: 1px solid transparent;
-    transition: all 0.1s;
-  }
-
-  .log-entry:hover {
-    background: var(--bg-low);
-    border-color: var(--border-dim);
-  }
-
-  .log-entry-current {
-    background: var(--bg-low);
-    border-color: var(--border-dim);
-  }
-
-  .log-line {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    align-items: baseline;
-    font-size: 13px;
-  }
-
-  .log-entry-current .log-line {
-    margin-bottom: 16px;
-  }
-
-  .log-detail + .log-line {
-    margin-bottom: 16px;
-  }
-
-  .log-period {
-    color: var(--outline);
-    flex-shrink: 0;
-    font-size: 12px;
-  }
-
-  .log-tag {
-    color: var(--primary);
-    flex-shrink: 0;
-    font-size: 12px;
-  }
-
-  .log-company {
-    color: var(--text);
-    font-weight: 500;
-    font-family: var(--sans);
-    font-size: 14px;
-  }
-
-  .log-detail {
-    padding-left: 0;
-    margin-top: 12px;
-  }
-
-  .log-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 12px;
-  }
-
-  .log-bullets li {
-    font-family: var(--sans);
-    font-size: 13px;
-    color: var(--text-muted);
-    display: flex;
-    gap: 8px;
-    line-height: 1.5;
-  }
-
-  .bullet-arrow {
-    color: var(--primary);
-    font-size: 10px;
-    flex-shrink: 0;
-    margin-top: 3px;
-  }
-
-  .log-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tag {
-    font-size: 11px;
-    color: var(--outline);
-    background: var(--bg-container);
-    border: 1px solid var(--border-dim);
-    padding: 2px 8px;
-    font-family: monospace;
-  }
-
-  @media (max-width: 600px) {
-    .log-line { flex-direction: column; gap: 4px; }
-    .log-period { font-size: 10px; }
-  }
-</style>

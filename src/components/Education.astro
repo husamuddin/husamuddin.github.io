@@ -7,7 +7,7 @@ const certs = [
 ];
 ---
 
-<section class="section" id="education">
+<section class="py-16" id="education">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">
@@ -15,140 +15,44 @@ const certs = [
       </h2>
     </div>
 
-    <div class="creds-grid">
-      <div class="creds-block">
-        <div class="block-label">// certifications</div>
-        <div class="cert-list">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-[2px]">
+      <div class="bg-bg-low p-7">
+        <div class="font-mono text-[11px] text-secondary lowercase tracking-[0.05em] mb-5">
+          // certifications
+        </div>
+        <div class="flex flex-col gap-4">
           {certs.map(c => (
-            <div class="cert-row">
-              <span class="cert-badge">{c.short}</span>
+            <div class="flex items-start gap-3">
+              <span class="font-mono text-[10px] font-bold text-primary bg-[var(--primary-dim)]
+                           border border-primary/25 px-[7px] py-[3px] shrink-0 min-w-[52px]
+                           text-center tracking-[0.05em]">
+                {c.short}
+              </span>
               <div>
-                <div class="cert-name">{c.name}</div>
-                <div class="cert-issuer">{c.issuer}</div>
+                <div class="text-[13px] font-medium text-text leading-[1.4]">{c.name}</div>
+                <div class="font-mono text-[11px] text-outline mt-0.5">{c.issuer}</div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div class="creds-block">
-        <div class="block-label">// education</div>
-        <div class="degree-row">
-          <span class="material-symbols-outlined deg-icon">school</span>
+      <div class="bg-bg-low p-7">
+        <div class="font-mono text-[11px] text-secondary lowercase tracking-[0.05em] mb-5">
+          // education
+        </div>
+        <div class="flex items-start gap-3 mb-4">
+          <span class="material-symbols-outlined text-[20px] text-primary shrink-0 mt-0.5">school</span>
           <div>
-            <div class="deg-name">B.Sc. Mechatronics Engineering</div>
-            <div class="deg-school">October 6 University</div>
+            <div class="text-[14px] font-semibold text-text leading-[1.4]">B.Sc. Mechatronics Engineering</div>
+            <div class="font-mono text-[12px] text-outline mt-[3px]">October 6 University</div>
           </div>
         </div>
-        <div class="deg-note">
+        <div class="text-[12px] text-text-muted leading-relaxed italic
+                    border-l-2 border-border pl-3">
           Engineering background shapes how I think about systems — feedback loops, failure modes, tolerance margins.
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .section { padding: 64px 0; }
-
-  .creds-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .creds-block {
-    background: var(--bg-low);
-    padding: 28px;
-  }
-
-  .block-label {
-    font-family: monospace;
-    font-size: 11px;
-    color: var(--secondary);
-    margin-bottom: 20px;
-    text-transform: lowercase;
-    letter-spacing: 0.05em;
-  }
-
-  .cert-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .cert-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .cert-badge {
-    font-family: monospace;
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--primary);
-    background: rgba(78, 222, 163, 0.1);
-    border: 1px solid rgba(78, 222, 163, 0.25);
-    padding: 3px 7px;
-    flex-shrink: 0;
-    min-width: 52px;
-    text-align: center;
-    letter-spacing: 0.05em;
-  }
-
-  .cert-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.4;
-  }
-
-  .cert-issuer {
-    font-size: 11px;
-    color: var(--outline);
-    margin-top: 2px;
-    font-family: monospace;
-  }
-
-  .degree-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-
-  .deg-icon {
-    color: var(--primary);
-    font-size: 20px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .deg-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.4;
-  }
-
-  .deg-school {
-    font-size: 12px;
-    color: var(--outline);
-    margin-top: 3px;
-    font-family: monospace;
-  }
-
-  .deg-note {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    font-style: italic;
-    border-left: 2px solid var(--border);
-    padding-left: 12px;
-  }
-
-  @media (max-width: 600px) {
-    .creds-grid { grid-template-columns: 1fr; }
-  }
-</style>

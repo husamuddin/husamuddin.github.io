@@ -1,103 +1,37 @@
 ---
 ---
 
-<section class="contact" id="contact">
+<section class="pt-16 pb-20 border-t border-[var(--border-dim)]" id="contact">
   <div class="container">
-    <div class="contact-inner">
-      <div class="contact-label">$ ./establish_connection.sh</div>
-      <h2 class="contact-heading">AWAITING SYSTEM HANDSHAKE...</h2>
-      <p class="contact-sub">
+    <div class="max-w-[600px]">
+      <div class="font-mono text-[12px] uppercase tracking-[0.1em] text-primary mb-4">
+        $ ./establish_connection.sh
+      </div>
+      <h2 class="text-[clamp(24px,4vw,36px)] font-bold tracking-[-0.04em] uppercase mb-4 leading-[1.1]">
+        AWAITING SYSTEM HANDSHAKE...
+      </h2>
+      <p class="font-mono text-[14px] text-text-muted leading-relaxed mb-10">
         Based in Dubai, UAE. Open to relocation and visa sponsorship.<br />
         Platform Engineering · SRE · DevOps · Cloud Infrastructure.
       </p>
 
-      <div class="contact-links">
-        <a href="mailto:husamuddin.hamad@gmail.com" class="contact-link">
-          <span class="material-symbols-outlined link-icon">mail</span>
+      <div class="flex flex-col gap-4">
+        <a href="mailto:husamuddin.hamad@gmail.com"
+           class="flex items-center gap-[14px] font-mono text-[14px] text-outline hover:text-primary transition-colors duration-100">
+          <span class="material-symbols-outlined text-[16px]">mail</span>
           <span>husamuddin.hamad@gmail.com</span>
         </a>
-        <a href="https://linkedin.com/in/husamuddin" target="_blank" rel="noopener" class="contact-link">
-          <span class="link-prefix">ssh</span>
+        <a href="https://linkedin.com/in/husamuddin" target="_blank" rel="noopener"
+           class="flex items-center gap-[14px] font-mono text-[14px] text-outline hover:text-primary transition-colors duration-100">
+          <span class="text-text-subtle text-[12px]">ssh</span>
           <span>linkedin.com/in/husamuddin</span>
         </a>
-        <a href="https://github.com/husamuddin" target="_blank" rel="noopener" class="contact-link">
-          <span class="link-prefix">cat</span>
+        <a href="https://github.com/husamuddin" target="_blank" rel="noopener"
+           class="flex items-center gap-[14px] font-mono text-[14px] text-outline hover:text-primary transition-colors duration-100">
+          <span class="text-text-subtle text-[12px]">cat</span>
           <span>github.com/husamuddin</span>
         </a>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .contact {
-    padding: 64px 0 80px;
-    border-top: 1px solid var(--border-dim);
-  }
-
-  .contact-inner {
-    max-width: 600px;
-  }
-
-  .contact-label {
-    font-family: monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--primary);
-    margin-bottom: 16px;
-  }
-
-  .contact-heading {
-    font-size: clamp(24px, 4vw, 36px);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    line-height: 1.1;
-  }
-
-  .contact-sub {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 40px;
-    font-family: monospace;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-family: monospace;
-    font-size: 14px;
-    color: var(--outline);
-    text-decoration: none;
-    transition: color 0.1s;
-  }
-
-  .contact-link:hover {
-    color: var(--primary);
-  }
-
-  .link-icon {
-    font-size: 16px;
-    color: var(--outline);
-    transition: color 0.1s;
-  }
-
-  .contact-link:hover .link-icon {
-    color: var(--primary);
-  }
-
-  .link-prefix {
-    color: var(--text-subtle);
-    font-size: 12px;
-  }
-</style>
