@@ -1,0 +1,116 @@
+---
+---
+
+<section class="manifesto">
+  <div class="container">
+    <div class="manifesto-inner">
+      <div class="manifesto-bg-text" aria-hidden="true">MANIFESTO</div>
+
+      <div class="manifesto-content">
+        <div class="manifesto-label">cat engineer_manifesto.md</div>
+
+        <h2 class="manifesto-heading">PLATFORM AS A<br />FORCE MULTIPLIER</h2>
+
+        <div class="manifesto-body">
+          <p>
+            "The platform's job is to disappear. When developers ship without thinking about
+            infrastructure, the platform has done its job. Every manual step, every tribal
+            knowledge dependency, every ticket to the platform team — is a bug."
+          </p>
+          <p>
+            "Complexity is the enemy of reliability. We don't add observability after the fact.
+            We don't bolt on security. We don't optimize after the outage. We build it in from
+            the start, or we accept the consequences."
+          </p>
+        </div>
+
+        <div class="manifesto-principles">
+          <p>1. Automate or it will bite you at 3am.</p>
+          <p>2. GitOps over ClickOps — if it's not in git, it doesn't exist.</p>
+          <p>3. Observability over intuition. Alert on symptoms, not causes.</p>
+          <p>4. Developer experience is platform correctness.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .manifesto {
+    padding: 64px 0;
+  }
+
+  .manifesto-inner {
+    background: var(--bg-low);
+    border: 1px solid var(--border-dim);
+    padding: 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .manifesto-bg-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 16px;
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text);
+    opacity: 0.03;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+
+  .manifesto-content {
+    max-width: 720px;
+  }
+
+  .manifesto-label {
+    font-family: monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--secondary);
+    margin-bottom: 20px;
+  }
+
+  .manifesto-heading {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    line-height: 1.05;
+  }
+
+  .manifesto-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-style: italic;
+    border-left: 2px solid var(--border);
+    padding-left: 24px;
+    margin-bottom: 28px;
+  }
+
+  .manifesto-body p {
+    font-size: 15px;
+  }
+
+  .manifesto-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .manifesto-inner { padding: 32px 24px; }
+  }
+</style>

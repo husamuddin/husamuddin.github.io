@@ -1,0 +1,103 @@
+---
+---
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-label">$ ./establish_connection.sh</div>
+      <h2 class="contact-heading">AWAITING SYSTEM HANDSHAKE...</h2>
+      <p class="contact-sub">
+        Based in Dubai, UAE. Open to relocation and visa sponsorship.<br />
+        Platform Engineering · SRE · DevOps · Cloud Infrastructure.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:husamuddin.hamad@gmail.com" class="contact-link">
+          <span class="material-symbols-outlined link-icon">mail</span>
+          <span>husamuddin.hamad@gmail.com</span>
+        </a>
+        <a href="https://linkedin.com/in/husamuddin" target="_blank" rel="noopener" class="contact-link">
+          <span class="link-prefix">ssh</span>
+          <span>linkedin.com/in/husamuddin</span>
+        </a>
+        <a href="https://github.com/husamuddin" target="_blank" rel="noopener" class="contact-link">
+          <span class="link-prefix">cat</span>
+          <span>github.com/husamuddin</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 64px 0 80px;
+    border-top: 1px solid var(--border-dim);
+  }
+
+  .contact-inner {
+    max-width: 600px;
+  }
+
+  .contact-label {
+    font-family: monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+    margin-bottom: 16px;
+  }
+
+  .contact-heading {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .contact-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-family: monospace;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: monospace;
+    font-size: 14px;
+    color: var(--outline);
+    text-decoration: none;
+    transition: color 0.1s;
+  }
+
+  .contact-link:hover {
+    color: var(--primary);
+  }
+
+  .link-icon {
+    font-size: 16px;
+    color: var(--outline);
+    transition: color 0.1s;
+  }
+
+  .contact-link:hover .link-icon {
+    color: var(--primary);
+  }
+
+  .link-prefix {
+    color: var(--text-subtle);
+    font-size: 12px;
+  }
+</style>

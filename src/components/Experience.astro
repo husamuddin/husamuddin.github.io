@@ -1,0 +1,235 @@
+---
+const logs = [
+  {
+    period: "2023-Q1 → NOW",
+    tag: "[SUCCESS] cloud_platform_engineer:",
+    company: "Hudl StatsBomb",
+    highlights: [
+      "Architected Kubernetes infra on AWS EKS for real-time sports analytics workloads.",
+      "Built K8s Loki Alert Rules Operator — dev teams configure alerting without platform team.",
+      "Replaced AWS DMS with Kafka Connect for DB migrations, cutting cost significantly.",
+      "Implemented KEDA autoscaling to sustain availability and eliminate idle spend.",
+      "Led Auth0 migration via Ory Oathkeeper proxy + Go backend for zero-downtime transition.",
+    ],
+    stack: ["EKS", "Terraform", "ArgoCD", "Kafka", "Go", "Prometheus", "KEDA"],
+  },
+  {
+    period: "2021-Q4 → 2023-Q1",
+    tag: "[SUCCESS] senior_fullstack_engineer:",
+    company: "Hudl StatsBomb",
+    highlights: [
+      "Built and maintained services in Node.js, Go, Python — reduced API latency.",
+      "Designed Kafka event-driven communication flows for high-load reliability.",
+      "Led technical evaluations of cloud solutions and new stacks.",
+    ],
+    stack: ["Node.js", "Go", "Python", "Kafka"],
+  },
+  {
+    period: "2020-Q4 → 2021-Q3",
+    tag: "[SUCCESS] technical_team_lead:",
+    company: "Vapulus (Fintech)",
+    highlights: [
+      "Architected payment systems on AWS with 99.99% uptime SLA.",
+      "Led SOC 2 and PCI DSS compliance — passed multiple audits.",
+      "Implemented Istio service mesh across payment services.",
+      "Migrated Docker Swarm cluster to AWS EKS, cutting outages and cost.",
+    ],
+    stack: ["AWS EKS", "Terraform", "Helm", "Istio"],
+  },
+  {
+    period: "2018 → 2020-Q3",
+    tag: "[SUCCESS] technical_team_lead:",
+    company: "Tqweem Masr (EdTech)",
+    highlights: [
+      "Decomposed monolithic system to microservices using the strangler pattern.",
+      "Led DevOps automation initiatives for zero-downtime releases.",
+    ],
+    stack: ["Node.js", "Docker", "Redis", "Jenkins"],
+  },
+  {
+    period: "2017-Q3 → 2018",
+    tag: "[SUCCESS] senior_fullstack_developer:",
+    company: "Tqweem Masr",
+    highlights: [
+      "Built real-time assessment tools with Node.js and Python.",
+    ],
+    stack: ["Node.js", "Python", "Docker"],
+  },
+  {
+    period: "2016-Q2 → 2017-Q2",
+    tag: "[SUCCESS] fullstack_developer:",
+    company: "Ousta Technologies",
+    highlights: [
+      "Built ride platform and implemented pub/sub event stream for real-time tracking.",
+    ],
+    stack: ["Node.js", "PHP", "Redis", "React"],
+  },
+];
+---
+
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="prompt">$</span> tail -f /var/log/impact_audit.log
+      </h2>
+    </div>
+
+    <div class="log-list">
+      {logs.map((entry, i) => (
+        <div class={`log-entry ${i === 0 ? 'log-entry-current' : ''}`}>
+          <div class="log-line">
+            <span class="log-period">[{entry.period}]</span>
+            <span class="log-tag">{entry.tag}</span>
+            <span class="log-company">{entry.company}</span>
+          </div>
+
+          {i === 0 && (
+            <div class="log-detail">
+              <ul class="log-bullets">
+                {entry.highlights.map(h => (
+                  <li>
+                    <span class="bullet-arrow">▸</span>{h}
+                  </li>
+                ))}
+              </ul>
+              <div class="log-stack">
+                {entry.stack.map(t => (
+                  <span class="tag">{t}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {i > 0 && i <= 2 && (
+            <div class="log-detail log-detail-collapsed">
+              <ul class="log-bullets">
+                {entry.highlights.map(h => (
+                  <li>
+                    <span class="bullet-arrow">▸</span>{h}
+                  </li>
+                ))}
+              </ul>
+              <div class="log-stack">
+                {entry.stack.map(t => (
+                  <span class="tag">{t}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 64px 0; }
+
+  .log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: monospace;
+  }
+
+  .log-entry {
+    padding: 16px;
+    border: 1px solid transparent;
+    transition: all 0.1s;
+  }
+
+  .log-entry:hover {
+    background: var(--bg-low);
+    border-color: var(--border-dim);
+  }
+
+  .log-entry-current {
+    background: var(--bg-low);
+    border-color: var(--border-dim);
+  }
+
+  .log-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: baseline;
+    font-size: 13px;
+  }
+
+  .log-entry-current .log-line {
+    margin-bottom: 16px;
+  }
+
+  .log-detail + .log-line {
+    margin-bottom: 16px;
+  }
+
+  .log-period {
+    color: var(--outline);
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+
+  .log-tag {
+    color: var(--primary);
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+
+  .log-company {
+    color: var(--text);
+    font-weight: 500;
+    font-family: var(--sans);
+    font-size: 14px;
+  }
+
+  .log-detail {
+    padding-left: 0;
+    margin-top: 12px;
+  }
+
+  .log-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .log-bullets li {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .bullet-arrow {
+    color: var(--primary);
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .log-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 11px;
+    color: var(--outline);
+    background: var(--bg-container);
+    border: 1px solid var(--border-dim);
+    padding: 2px 8px;
+    font-family: monospace;
+  }
+
+  @media (max-width: 600px) {
+    .log-line { flex-direction: column; gap: 4px; }
+    .log-period { font-size: 10px; }
+  }
+</style>

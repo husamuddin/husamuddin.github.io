@@ -1,0 +1,81 @@
+---
+---
+
+<footer class="footer">
+  <div class="footer-left">
+    <span class="footer-status">[BUILD: SUCCESS]</span>
+    <span class="footer-ip">IP: 127.0.0.1</span>
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/husamuddin" target="_blank" rel="noopener">cat github.md</a>
+    <a href="https://linkedin.com/in/husamuddin" target="_blank" rel="noopener">ssh linkedin</a>
+    <a href="mailto:husamuddin.hamad@gmail.com">mail contact</a>
+  </div>
+  <div class="footer-version">PLATFORM_OS v12.0.0</div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg-low);
+    color: var(--primary);
+    font-family: monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-top: 1px solid var(--border-dim);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 40px;
+    z-index: 40;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-status {
+    font-weight: 700;
+  }
+
+  .footer-ip {
+    color: var(--outline);
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .footer-ip { display: inline; }
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    color: var(--outline);
+    text-decoration: none;
+    transition: color 0.1s;
+  }
+
+  .footer-links a:hover {
+    color: var(--primary);
+  }
+
+  .footer-version {
+    color: var(--outline);
+    font-size: 9px;
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .footer-version { display: block; }
+  }
+</style>

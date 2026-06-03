@@ -1,0 +1,87 @@
+---
+---
+
+<nav class="nav">
+  <div class="nav-left">
+    <span class="nav-prompt">&gt; root@husamuddin: ~/platform-engineer</span>
+  </div>
+  <div class="nav-center">
+    <span class="nav-status active">[UPTIME: 12+ YRS]</span>
+    <span class="nav-status dim">[AVAILABLE]</span>
+  </div>
+  <div class="nav-right">
+    <span class="material-symbols-outlined nav-icon" title="Terminal">terminal</span>
+    <span class="material-symbols-outlined nav-icon" title="Infrastructure">settings_input_component</span>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    background: var(--bg);
+    color: var(--primary);
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 16px;
+    height: 48px;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+
+  .nav-prompt {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-center {
+    display: none;
+    gap: 32px;
+  }
+
+  @media (min-width: 768px) {
+    .nav-center { display: flex; }
+  }
+
+  .nav-status {
+    font-size: 12px;
+  }
+
+  .nav-status.active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 4px;
+  }
+
+  .nav-status.dim {
+    color: var(--outline);
+    transition: color 0.1s;
+    cursor: default;
+  }
+
+  .nav-status.dim:hover { color: var(--primary); }
+
+  .nav-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .nav-icon {
+    font-size: 18px;
+    color: var(--primary);
+    padding: 4px;
+    cursor: default;
+    transition: all 0.1s;
+  }
+
+  .nav-icon:hover {
+    background: var(--primary);
+    color: var(--bg);
+  }
+</style>

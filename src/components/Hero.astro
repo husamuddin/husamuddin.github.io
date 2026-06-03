@@ -1,0 +1,209 @@
+---
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left: Text -->
+      <div class="hero-left">
+        <div class="hero-session">
+          <span class="material-symbols-outlined" style="font-size:16px">terminal</span>
+          <span class="session-label">[SESSION_INITIATED]</span>
+        </div>
+
+        <h1 class="hero-heading">
+          <span class="prompt">&gt;</span>
+          whoami: I BUILD THE SYSTEMS THAT LET YOUR TEAMS SHIP<span class="cursor-blink prompt" style="font-weight:800;margin-left:4px;">|</span>
+        </h1>
+
+        <p class="hero-sub">
+          Platform &amp; Infrastructure Engineer with 12+ years designing
+          cloud-native systems end-to-end. GitOps, service meshes, Kubernetes,
+          Kafka — and the AI automation workflows that cut toil.
+          I've been on both sides of the platform.
+        </p>
+
+        <div class="hero-cta">
+          <a href="mailto:husamuddin.hamad@gmail.com" class="btn btn-primary">
+            INITIALIZE_CONTACT
+          </a>
+          <a
+            href="https://github.com/husamuddin"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-outline"
+          >
+            VIEW_REPOS
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: ASCII Diagram -->
+      <div class="hero-right">
+        <div class="diagram-label">Live_Deploy_Visualizer</div>
+        <pre class="diagram-code">
+[DEPLOYING] &gt;&gt; k3s_cluster_prod
+[FETCHING]  &gt;&gt; argocd/applicationset
+
+    +------------------+     +------------------+
+    |   Netbird VPN    |&lt;----| External Traffic |
+    +--------+---------+     +------------------+
+             |
+    +--------v---------+     +------------------+
+    |   Istio Ingress  |----&gt;|   Dex OIDC SSO   |
+    +--------+---------+     +------------------+
+             |
+    +--------v----------------------------------+
+    |           k3s CLUSTER                     |
+    |  +----------+    +----------+             |
+    |  |  ArgoCD  |    |   App    |             |
+    |  +----------+    | Workload |             |
+    |                  +----------+             |
+    |  +------------------+                     |    +------------+
+    |  | External Secrets |-- secrets sync -----|---&gt;| Bitwarden  |
+    |  +------------------+                     |    +------------+
+    +-------------------------------------------+
+             |
+    +--------v---------+
+    |   PostgreSQL     |
+    +------------------+
+
+[STATUS] &gt;&gt; GitOps: SYNCED
+[STATUS] &gt;&gt; Health_Check: PASSING
+        </pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 64px 0 96px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .hero-session {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+  }
+
+  .session-label {
+    font-family: monospace;
+  }
+
+  .hero-heading {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .prompt { color: var(--primary); }
+
+  .hero-sub {
+    color: var(--text-muted);
+    max-width: 520px;
+    font-size: 16px;
+    line-height: 1.65;
+    margin-bottom: 36px;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.1s;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: #003824;
+    border: 1px solid var(--primary);
+  }
+
+  .btn-primary:hover {
+    background: #003824;
+    color: var(--primary);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--outline);
+  }
+
+  .btn-outline:hover {
+    background: var(--primary-dim);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* Diagram */
+  .hero-right {
+    background: var(--bg-low);
+    border: 1px solid var(--border-dim);
+    padding: 24px;
+    font-family: monospace;
+    font-size: 11px;
+    color: rgba(78, 222, 163, 0.8);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .diagram-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 8px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--outline);
+    background: var(--bg-high);
+  }
+
+  .diagram-code {
+    white-space: pre;
+    line-height: 1.4;
+    overflow-x: auto;
+    font-size: 10.5px;
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 40px 0 64px; }
+    .hero-right { font-size: 9px; }
+    .diagram-code { font-size: 9px; }
+  }
+</style>

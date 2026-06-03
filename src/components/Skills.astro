@@ -1,0 +1,126 @@
+---
+const categories = [
+  {
+    label: "Platform & Infra",
+    icon: "dns",
+    skills: ["Kubernetes", "AWS EKS", "GCP", "Terraform", "Terragrunt", "ArgoCD", "Helm", "Kustomize", "Atlantis", "Istio", "cert-manager", "External Secrets Operator", "Netbird VPN", "KEDA"],
+  },
+  {
+    label: "Observability",
+    icon: "monitoring",
+    skills: ["Prometheus", "Grafana", "Loki", "Alertmanager", "Coroot", "ClickHouse", "OpenTelemetry"],
+  },
+  {
+    label: "CI/CD & GitOps",
+    icon: "sync_alt",
+    skills: ["GitHub Actions", "ArgoCD", "Argo Workflows", "AWS Step Functions", "Docker", "multi-arch builds"],
+  },
+  {
+    label: "Backend & Languages",
+    icon: "code",
+    skills: ["Go", "Python", "TypeScript", "Node.js", "FastAPI", "Microservices", "DDD", "Event Sourcing"],
+  },
+  {
+    label: "Data & Messaging",
+    icon: "hub",
+    skills: ["Kafka", "Kafka Connect", "RabbitMQ", "PostgreSQL", "MongoDB", "Redis", "Elasticsearch"],
+  },
+  {
+    label: "AI & Automation",
+    icon: "auto_awesome",
+    skills: ["n8n", "Ollama", "Claude API", "MCP", "Multi-agent pipelines", "LLM workflows"],
+  },
+];
+---
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="prompt">$</span> ls -la /usr/local/skills/
+      </h2>
+      <span class="section-meta">[MODULES: {categories.length}]</span>
+    </div>
+
+    <div class="skills-grid">
+      {categories.map(cat => (
+        <div class="skill-cat">
+          <div class="cat-header">
+            <span class="material-symbols-outlined cat-icon">{cat.icon}</span>
+            <h3 class="cat-label">{cat.label}</h3>
+          </div>
+          <div class="tag-list">
+            {cat.skills.map(s => <span class="skill-tag">{s}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 64px 0; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+  }
+
+  .skill-cat {
+    background: var(--bg-low);
+    padding: 24px;
+    border-left: 2px solid var(--border);
+    transition: border-color 0.1s;
+  }
+
+  .skill-cat:hover {
+    border-left-color: var(--primary);
+  }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .cat-icon {
+    font-size: 16px;
+    color: var(--primary);
+  }
+
+  .cat-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text);
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--bg-container);
+    border: 1px solid var(--border-dim);
+    padding: 3px 8px;
+    transition: all 0.1s;
+    cursor: default;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>

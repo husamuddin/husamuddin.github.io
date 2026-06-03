@@ -1,0 +1,146 @@
+---
+const projects = [
+  {
+    name: "homelab",
+    status: "RUNNING",
+    desc: "Bare-metal Proxmox host running k3s with full GitOps, Istio service mesh, Netbird VPN, Dex SSO, and local LLM inference on AMD iGPU. Where I go deep before going to prod.",
+    stack: ["Proxmox", "k3s", "ArgoCD", "Istio", "Terraform", "Ollama", "Coroot"],
+  },
+  {
+    name: "ai-agent-platform",
+    status: "RUNNING",
+    desc: "Multi-agent orchestration for architect → tech → review pipelines, LLM-powered bots, and n8n automation that replaces manual toil with code.",
+    stack: ["n8n", "Claude API", "MCP", "Ollama", "Discord"],
+  },
+  {
+    name: "personal-ai",
+    status: "RUNNING",
+    desc: "Terminal-native AI assistant backed by local LLM, with SQLite persistent memory and MCP tool integrations. Self-contained, no cloud dependency.",
+    stack: ["Python", "Ollama", "SQLite", "MCP"],
+  },
+  {
+    name: "ai-driven-activity-auto-discover",
+    status: "IN_PROGRESS",
+    desc: "Event-driven activity discovery platform. Kafka-driven architecture, Zitadel auth, Next.js frontend.",
+    stack: ["FastAPI", "Kafka", "Next.js", "Zitadel", "PostgreSQL"],
+  },
+];
+---
+
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="prompt">$</span> ls ~/side-projects/
+      </h2>
+      <span class="section-meta">[ACTIVE_PROCESSES: {projects.length}]</span>
+    </div>
+
+    <div class="projects-grid">
+      {projects.map(p => (
+        <div class="project-card">
+          <div class="project-top">
+            <span class={`badge ${p.status === 'RUNNING' ? 'badge-running' : 'badge-wip'}`}>
+              [{p.status}]
+            </span>
+            <span class="material-symbols-outlined project-icon">
+              {p.status === 'RUNNING' ? 'check_circle' : 'pending'}
+            </span>
+          </div>
+          <h3 class="project-name">{p.name}</h3>
+          <p class="project-desc">{p.desc}</p>
+          <div class="project-stack">
+            {p.stack.map(t => <span class="tag">{t}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 64px 0; }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .project-card {
+    background: var(--bg-low);
+    padding: 24px;
+    border-left: 2px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background 0.1s;
+  }
+
+  .project-card:hover {
+    background: var(--bg-high);
+  }
+
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .badge {
+    font-family: monospace;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-running {
+    background: var(--primary);
+    color: #003824;
+  }
+
+  .badge-wip {
+    background: #d29922;
+    color: #1a0e00;
+  }
+
+  .project-icon {
+    color: var(--primary);
+    font-size: 18px;
+  }
+
+  .project-name {
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: lowercase;
+    color: var(--text);
+  }
+
+  .project-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tag {
+    font-family: monospace;
+    font-size: 10px;
+    color: var(--outline);
+    background: var(--bg-container);
+    border: 1px solid var(--border-dim);
+    padding: 2px 7px;
+  }
+
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>

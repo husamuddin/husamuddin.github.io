@@ -1,0 +1,154 @@
+---
+const certs = [
+  { short: "CKA",   name: "Certified Kubernetes Administrator",          issuer: "CNCF" },
+  { short: "CKAD",  name: "Certified Kubernetes Application Developer",  issuer: "CNCF" },
+  { short: "DDD",   name: "Software Architecture: Domain-Driven Design", issuer: "Coursera" },
+  { short: "KAFKA", name: "Kafka: Microservices",                        issuer: "Confluent" },
+];
+---
+
+<section class="section" id="education">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="prompt">$</span> cat credentials.json
+      </h2>
+    </div>
+
+    <div class="creds-grid">
+      <div class="creds-block">
+        <div class="block-label">// certifications</div>
+        <div class="cert-list">
+          {certs.map(c => (
+            <div class="cert-row">
+              <span class="cert-badge">{c.short}</span>
+              <div>
+                <div class="cert-name">{c.name}</div>
+                <div class="cert-issuer">{c.issuer}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="creds-block">
+        <div class="block-label">// education</div>
+        <div class="degree-row">
+          <span class="material-symbols-outlined deg-icon">school</span>
+          <div>
+            <div class="deg-name">B.Sc. Mechatronics Engineering</div>
+            <div class="deg-school">October 6 University</div>
+          </div>
+        </div>
+        <div class="deg-note">
+          Engineering background shapes how I think about systems — feedback loops, failure modes, tolerance margins.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 64px 0; }
+
+  .creds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .creds-block {
+    background: var(--bg-low);
+    padding: 28px;
+  }
+
+  .block-label {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+  }
+
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cert-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cert-badge {
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--primary);
+    background: rgba(78, 222, 163, 0.1);
+    border: 1px solid rgba(78, 222, 163, 0.25);
+    padding: 3px 7px;
+    flex-shrink: 0;
+    min-width: 52px;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  .cert-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .cert-issuer {
+    font-size: 11px;
+    color: var(--outline);
+    margin-top: 2px;
+    font-family: monospace;
+  }
+
+  .degree-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .deg-icon {
+    color: var(--primary);
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .deg-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .deg-school {
+    font-size: 12px;
+    color: var(--outline);
+    margin-top: 3px;
+    font-family: monospace;
+  }
+
+  .deg-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-style: italic;
+    border-left: 2px solid var(--border);
+    padding-left: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .creds-grid { grid-template-columns: 1fr; }
+  }
+</style>
